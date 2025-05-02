@@ -86,14 +86,14 @@ public class ReservationManagementView extends Application {
                 return;
             }
 
-            // ✅ Get available rooms for the given date/time
+            // Get available rooms for the given date/time
             ArrayList<Room> availableRooms = getAvailableRooms(date, start, end);
 
-            // ✅ Open a new window with the available rooms
+            // Open a new window with the available rooms
             Stage resultsStage = new Stage();
             new RoomListView().show(resultsStage, availableRooms, false);
 
-            // ✅ Close the current window
+            // Close the current window
             ((Stage) SearchBtn.getScene().getWindow()).close();
         });
 
