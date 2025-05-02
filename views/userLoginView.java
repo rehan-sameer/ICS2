@@ -72,6 +72,7 @@ public class userLoginView extends Application {
                     Stage loginStage = new Stage();
                     RegisterView register = new RegisterView();
                     register.start(loginStage);
+                    stage.close(); // close login window
                 });
                 gp.add(registerBtn,1,6);
 

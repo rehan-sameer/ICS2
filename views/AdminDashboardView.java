@@ -57,6 +57,16 @@ public class AdminDashboardView extends Application {
         stage.setTitle("ADMIN DASHBOARD");
         stage.show();
 
+        viewRequestsBtn.setOnAction(e -> {
+            Stage reservationListStage = new Stage();
+            ReservationListView reservationListView = new ReservationListView();
+            reservationListView.start(reservationListStage);
+        });
+
+        logoutBtn.setOnAction(e -> {
+            stage.close(); // Close the dashboard
+        });
+
     }
 
 }

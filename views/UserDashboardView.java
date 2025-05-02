@@ -44,6 +44,19 @@ public class UserDashboardView extends Application {
             roomListView.start(roomListStage);
         });
 
+        myBookingsBtn.setOnAction(e -> {
+            Stage reservationListStage = new Stage();
+            ReservationListView reservationListView = new ReservationListView();
+            reservationListView.start(reservationListStage);
+        });
+        logoutBtn.setOnAction(e -> {
+            stage.close();
+            // Open the login view
+            Stage loginStage = new Stage();
+            userLoginView userLoginView = new userLoginView();
+            userLoginView.start(loginStage);
+        });
+
     }
 
 }
