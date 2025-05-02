@@ -39,9 +39,9 @@ public class UserDashboardView extends Application {
         stage.show();
 
         searchRoomsBtn.setOnAction(e -> {
-            Stage roomListStage = new Stage();
-            RoomListView roomListView = new RoomListView();
-            roomListView.start(roomListStage);
+            Stage reservationStage = new Stage();
+            ReservationManagementView reservationManagementView = new ReservationManagementView();
+            reservationManagementView.start(reservationStage);
         });
 
         myBookingsBtn.setOnAction(e -> {

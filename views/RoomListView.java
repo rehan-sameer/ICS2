@@ -1,24 +1,20 @@
 package views;
 
-import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import Objects.Room;
-import java.util.ArrayList;
+import java.util.List;
 
-public class RoomListView extends Application {
+public class RoomListView {
 
-    @Override
-    public void start(Stage stage) {
+    public void show(Stage stage, List<Room> roomList) {
         GridPane gp = new GridPane();
         gp.setPadding(new Insets(20));
         gp.setVgap(10);
         gp.setHgap(15);
-
-        ArrayList<Room> roomList = MainApp.rooms;
 
         gp.add(new Label("Room Number"), 0, 0);
         gp.add(new Label("Capacity"), 1, 0);
@@ -36,7 +32,7 @@ public class RoomListView extends Application {
 
         Scene scene = new Scene(gp, 600, 400);
         stage.setScene(scene);
-        stage.setTitle("Room List");
+        stage.setTitle("Available Rooms");
         stage.show();
     }
 }
