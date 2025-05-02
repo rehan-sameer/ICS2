@@ -1,6 +1,5 @@
 package views;
 
-
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -11,7 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import Objects.Room;
-import java.util.ArrayList;
 
 public class RoomManagementView extends Application {
 

@@ -11,7 +11,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -91,7 +90,7 @@ public class ReservationManagementView extends Application {
 
             // Open a new window with the available rooms
             Stage resultsStage = new Stage();
-            new RoomListView().show(resultsStage, availableRooms, false);
+            new RoomListView().show(resultsStage, availableRooms, currentUser, date, start, end);
 
             // Close the current window
             ((Stage) SearchBtn.getScene().getWindow()).close();

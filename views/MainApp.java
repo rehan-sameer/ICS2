@@ -19,6 +19,7 @@ public class MainApp extends Application {
     public static ArrayList<User> users = new ArrayList<>();
     public static ArrayList<Room> rooms = new ArrayList<>();
     public static ArrayList<Reservation> reservations = new ArrayList<>();
+    public static User Admin = new User ("admin", "admin", "admin");
     @Override
     public void start(Stage applicationStage) {
         GridPane gp = new GridPane();

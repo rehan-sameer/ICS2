@@ -11,8 +11,16 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
-public class ReservationListView extends Application {
+import static views.MainApp.Admin;
+import static views.MainApp.reservations;
 
+public class ReservationListView extends Application {
+    private User currentUser;
+
+    // Constructor to accept User
+    public ReservationListView(User user) {
+        this.currentUser = user;
+    }
     @Override
     public void start(Stage stage) {
         GridPane gp = new GridPane();
@@ -20,7 +28,17 @@ public class ReservationListView extends Application {
         gp.setVgap(10);
         gp.setHgap(15);
 
-        ArrayList<Reservation> reservationList = MainApp.reservations;
+        ArrayList<Reservation> reservationList;
+        if (currentUser == Admin) {
+            reservationList = reservations;
+        } else {
+            reservationList = new ArrayList<>();
+            for (Reservation reservation : reservations) {
+                if (reservation.getUser().getUsername().equals(currentUser.getUsername())) {
+                    reservationList.add(reservation);
+                }
+            }
+        }
 
         gp.add(new Label("Room Number"), 0, 0);
         gp.add(new Label("Username"), 1, 0);

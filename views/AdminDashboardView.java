@@ -6,13 +6,17 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import Objects.User;
 
+import static views.MainApp.Admin;
+
 public class AdminDashboardView extends Application {
+    private User currentUser;
+
     @Override
     public void start (Stage stage){
+        currentUser = Admin;
         GridPane gp = new GridPane();
         gp.setHgap(10);
         gp.setVgap(15);
@@ -38,7 +42,7 @@ public class AdminDashboardView extends Application {
         viewRoomsBtn.setOnAction(e -> {
             Stage roomListStage = new Stage();
             RoomListView roomListView = new RoomListView();
-            roomListView.show(roomListStage, MainApp.rooms, true);
+            roomListView.show(roomListStage, MainApp.rooms, Admin, null, null, null);
         });
 
 
@@ -59,7 +63,7 @@ public class AdminDashboardView extends Application {
 
         viewRequestsBtn.setOnAction(e -> {
             Stage reservationListStage = new Stage();
-            ReservationListView reservationListView = new ReservationListView();
+            ReservationListView reservationListView = new ReservationListView(currentUser);
             reservationListView.start(reservationListStage);
         });
 

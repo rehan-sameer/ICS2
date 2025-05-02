@@ -53,7 +53,7 @@ public class UserDashboardView extends Application {
 
         myBookingsBtn.setOnAction(e -> {
             Stage reservationListStage = new Stage();
-            ReservationListView reservationListView = new ReservationListView();
+            ReservationListView reservationListView = new ReservationListView(currentUser);
             reservationListView.start(reservationListStage);
         });
 
