@@ -83,7 +83,7 @@ public class ReservationManagementView extends Application {
 
             // ✅ Open a new window with the available rooms
             Stage resultsStage = new Stage();
-            new RoomListView().show(resultsStage, availableRooms);
+            new RoomListView().show(resultsStage, availableRooms, false);
 
             // ✅ Close the current window
             ((Stage) SearchBtn.getScene().getWindow()).close();

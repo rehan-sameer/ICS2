@@ -38,7 +38,7 @@ public class AdminDashboardView extends Application {
         viewRoomsBtn.setOnAction(e -> {
             Stage roomListStage = new Stage();
             RoomListView roomListView = new RoomListView();
-            roomListView.show(roomListStage, MainApp.rooms);
+            roomListView.show(roomListStage, MainApp.rooms, true);
         });
 
 
