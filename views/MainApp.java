@@ -1,5 +1,6 @@
 package views;
 
+import Objects.Reservation;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -17,8 +18,7 @@ public class MainApp extends Application {
 
     public static ArrayList<User> users = new ArrayList<>();
     public static ArrayList<Room> rooms = new ArrayList<>();
-
-
+    public static ArrayList<Reservation> reservations = new ArrayList<>();
     @Override
     public void start(Stage applicationStage) {
         GridPane gp = new GridPane();

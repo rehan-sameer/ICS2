@@ -9,10 +9,10 @@ public class User {
 
     // Constructor
     public User(String name, String username, String password) {
-        users.add(this);
         this.name = name;
         this.username = username;
         this.password = password;
+        users.add(this);
     }
 
     // Getters for the user

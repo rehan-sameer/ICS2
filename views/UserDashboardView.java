@@ -38,6 +38,12 @@ public class UserDashboardView extends Application {
         stage.setTitle("USER DASHBOARD");
         stage.show();
 
+        searchRoomsBtn.setOnAction(e -> {
+            Stage roomListStage = new Stage();
+            RoomListView roomListView = new RoomListView();
+            roomListView.start(roomListStage);
+        });
+
     }
 
 }

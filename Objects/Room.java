@@ -9,11 +9,12 @@ public class Room {
     private boolean occupancy;
 
     public Room(String roomNo, int capacity, String location) {
-        rooms.add(this);
+
         this.roomNo = roomNo;
         this.capacity = capacity;
         this.location = location;
         this.occupancy = false; // default: not occupied
+        rooms.add(this);
     }
 
     public String getRoomNo() {return roomNo;}

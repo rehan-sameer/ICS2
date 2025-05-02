@@ -3,6 +3,8 @@ package Objects;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import static views.MainApp.reservations;
+
 public class Reservation {
 
     private Room room;
@@ -19,6 +21,7 @@ public class Reservation {
         this.startTime = startTime;
         this.endTime = endTime;
         this.status = "Pending";
+        reservations.add(this);
     }
 
     // Getters
