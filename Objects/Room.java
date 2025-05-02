@@ -1,5 +1,7 @@
 package Objects;
 
+import static views.MainApp.rooms;
+
 public class Room {
     private String roomNo;
     private int capacity;
@@ -7,6 +9,7 @@ public class Room {
     private boolean occupancy;
 
     public Room(String roomNo, int capacity, String location) {
+        rooms.add(this);
         this.roomNo = roomNo;
         this.capacity = capacity;
         this.location = location;
