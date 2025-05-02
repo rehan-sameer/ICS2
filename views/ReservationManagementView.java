@@ -1,6 +1,7 @@
 package views;
 
 import Objects.Room;
+import Objects.User;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -18,6 +19,13 @@ import java.util.ArrayList;
 import static views.AvailableRoomSearch.getAvailableRooms;
 
 public class ReservationManagementView extends Application {
+    private User currentUser;
+
+    // Constructor to accept User
+    public ReservationManagementView(User user) {
+        this.currentUser = user;
+    }
+
     @Override
     public void start(Stage stage) {
         GridPane gp = new GridPane();

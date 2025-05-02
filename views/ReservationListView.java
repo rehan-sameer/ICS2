@@ -1,6 +1,7 @@
 package views;
 
 import Objects.Reservation;
+import Objects.User;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -11,6 +12,7 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 
 public class ReservationListView extends Application {
+
     @Override
     public void start(Stage stage) {
         GridPane gp = new GridPane();

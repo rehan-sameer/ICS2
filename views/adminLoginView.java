@@ -35,9 +35,19 @@ public class adminLoginView extends Application {
         gp.add(loginBtn, 2, 3);
 
         loginBtn.setOnAction(e -> {
-            Stage loginStage = new Stage();
-            AdminDashboardView userLogin = new AdminDashboardView();
-            userLogin.start(loginStage);
+            String inputUsername = usernameTF.getText();
+            String inputPassword = passwordTF.getText();
+
+            if (inputUsername.equals("admin") && inputPassword.equals("admin")) {
+                Stage loginStage = new Stage();
+                AdminDashboardView userLogin = new AdminDashboardView();
+                userLogin.start(loginStage);
+                stage.close();
+            }
+            else {
+                Label messageLabel = new Label("Invalid username or password");
+                gp.add(messageLabel, 1, 4);
+            }
         });
 
 
