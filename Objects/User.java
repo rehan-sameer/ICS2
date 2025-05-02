@@ -1,10 +1,9 @@
 package Objects;
 
-import java.util.ArrayList;
+import static views.MainApp.users;
 
 public class User {
     private String name;
-    private String email;
     private String username;
     private String password;
 
@@ -13,9 +12,10 @@ public class User {
         this.name = name;
         this.username = username;
         this.password = password;
+        users.add(this);
     }
 
-    // getters for the user
+    // Getters for the user
 
     public String getName() {
         return name;
@@ -27,7 +27,7 @@ public class User {
         return password;
     }
 
-    // Ssetters for the user
+    // Setters for the user
 
     public void setName(String name) {
         this.name = name;
@@ -38,6 +38,4 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    ArrayList<User> users = new ArrayList<>();
 }

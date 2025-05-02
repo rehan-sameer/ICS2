@@ -48,11 +48,13 @@ public class userLoginView extends Application {
             String inputPassword = passwordTF.getText();
 
             boolean valid = false;
+            User loggedInUser = null;
 
             for (User user : MainApp.users) {
                 if (user.getUsername().equals(inputUsername) &&
                         user.getPassword().equals(inputPassword)) {
                     valid = true;
+                    loggedInUser = user;
                     break;
                 }
             }
@@ -60,7 +62,7 @@ public class userLoginView extends Application {
             if (valid) {
                 messageLabel.setText(""); // clear any previous error
                 // open user dashboard
-                UserDashboardView dashboard = new UserDashboardView();
+                UserDashboardView dashboard = new UserDashboardView(loggedInUser);
                 Stage dashboardStage = new Stage();
                 dashboard.start(dashboardStage);
                 stage.close(); // optional: close login window
@@ -72,6 +74,7 @@ public class userLoginView extends Application {
                     Stage loginStage = new Stage();
                     RegisterView register = new RegisterView();
                     register.start(loginStage);
+                    stage.close(); // close login window
                 });
                 gp.add(registerBtn,1,6);
 

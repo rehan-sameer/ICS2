@@ -58,7 +58,6 @@ public class RoomManagementView extends Application {
             }
 
             Room newRoom = new Room(roomNumber, capacity, location);
-            MainApp.rooms.add(newRoom);
             messageLabel.setText("Room added: " + roomNumber);
 
             roomNumberTF.clear();

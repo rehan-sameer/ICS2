@@ -1,4 +1,5 @@
 package views;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -6,20 +7,27 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import Objects.User;
 
 public class UserDashboardView extends Application {
+    private User currentUser;
+
+    // Constructor to accept User
+    public UserDashboardView(User user) {
+        this.currentUser = user;
+    }
+
     @Override
-    public void start (Stage stage){
+    public void start(Stage stage) {
         GridPane gp = new GridPane();
         gp.setHgap(10);
         gp.setVgap(15);
         gp.setPadding(new Insets(20, 20, 20, 20)); // top, right, bottom, left
         gp.setAlignment(Pos.CENTER);
 
-
-        Label dashboardLabel = new Label("Welcome to the User Dashboard!");
+        // Personalized welcome message
+        Label dashboardLabel = new Label("Welcome " + currentUser.getUsername() + " to the User Dashboard!");
 
         Button searchRoomsBtn = new Button("Search Available Rooms");
         Button myBookingsBtn = new Button("My Bookings");
@@ -31,13 +39,30 @@ public class UserDashboardView extends Application {
         gp.add(myBookingsBtn, 0, 2);
         gp.add(logoutBtn, 0, 3);
 
-
-
         Scene scene = new Scene(gp, 350, 220);
         stage.setScene(scene);
         stage.setTitle("USER DASHBOARD");
         stage.show();
 
-    }
+        // Button actions
+        searchRoomsBtn.setOnAction(e -> {
+            Stage reservationStage = new Stage();
+            ReservationManagementView reservationManagementView = new ReservationManagementView(currentUser);
+            reservationManagementView.start(reservationStage);
+        });
 
+        myBookingsBtn.setOnAction(e -> {
+            Stage reservationListStage = new Stage();
+            ReservationListView reservationListView = new ReservationListView();
+            reservationListView.start(reservationListStage);
+        });
+
+        logoutBtn.setOnAction(e -> {
+            stage.close();
+            // Open the login view
+            Stage loginStage = new Stage();
+            userLoginView userLoginView = new userLoginView();
+            userLoginView.start(loginStage);
+        });
+    }
 }

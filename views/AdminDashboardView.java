@@ -38,7 +38,7 @@ public class AdminDashboardView extends Application {
         viewRoomsBtn.setOnAction(e -> {
             Stage roomListStage = new Stage();
             RoomListView roomListView = new RoomListView();
-            roomListView.start(roomListStage);
+            roomListView.show(roomListStage, MainApp.rooms, true);
         });
 
 
@@ -56,6 +56,16 @@ public class AdminDashboardView extends Application {
         stage.setScene(scene);
         stage.setTitle("ADMIN DASHBOARD");
         stage.show();
+
+        viewRequestsBtn.setOnAction(e -> {
+            Stage reservationListStage = new Stage();
+            ReservationListView reservationListView = new ReservationListView();
+            reservationListView.start(reservationListStage);
+        });
+
+        logoutBtn.setOnAction(e -> {
+            stage.close(); // Close the dashboard
+        });
 
     }
 

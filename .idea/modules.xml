@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/ICS2.iml" filepath="$PROJECT_DIR$/.idea/ICS2.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/ICS2.iml" filepath="$PROJECT_DIR$/ICS2.iml" />
+>>>>>>> 43fa09cef3dc3981e2be32295d06388a37524376
     </modules>
   </component>
 </project>
