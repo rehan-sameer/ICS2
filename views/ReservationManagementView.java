@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import views.RoomListView;
 
 import static views.AvailableRoomSearch.getAvailableRooms;
 
@@ -91,6 +92,7 @@ public class ReservationManagementView extends Application {
             // Open a new window with the available rooms
             Stage resultsStage = new Stage();
             new RoomListView().show(resultsStage, availableRooms, currentUser, date, start, end);
+            // todo: set title to currentUser==Admin ? "All Rooms (Admin View)" : "Available Rooms"
 
             // Close the current window
             ((Stage) SearchBtn.getScene().getWindow()).close();

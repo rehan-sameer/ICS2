@@ -10,11 +10,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import Objects.User;
+import views.MainApp;
 
-public class RegisterView extends Application {
-
-    @Override
-    public void start(Stage stage) {
+public class RegisterView{
+    public static Scene RegisterView() {
         GridPane gp = new GridPane();
         gp.setPadding(new Insets(20));
         gp.setHgap(10);
@@ -22,7 +21,7 @@ public class RegisterView extends Application {
         gp.setAlignment(Pos.CENTER);
 
         // Labels and Fields
-        Label titleLabel = new Label("Hi! Welcome new user!\n Enter your credentials below");
+        Label titleLabel = new Label("Hi! Welcome new user!\nEnter your credentials below");
         Label nameLabel = new Label("Full Name:");
         Label usernameLabel = new Label("Username:");
         Label passwordLabel = new Label("Password:");
@@ -32,6 +31,7 @@ public class RegisterView extends Application {
         TextField passwordTF = new TextField();
 
         Button registerBtn = new Button("Register");
+        Button cancelBtn = new Button("Cancel");
 
         // Add to GridPane
         gp.add(titleLabel, 0, 0, 2, 1); // span 2 columns
@@ -41,7 +41,8 @@ public class RegisterView extends Application {
         gp.add(usernameTF, 1, 2);
         gp.add(passwordLabel, 0, 3);
         gp.add(passwordTF, 1, 3);
-        gp.add(registerBtn, 0, 4, 2, 1); // center button across 2
+        gp.add(registerBtn, 1, 4, 2, 1); // center button across 2
+        gp.add(cancelBtn, 0, 4, 2, 1); // center button across 2
 
 
 
@@ -65,21 +66,21 @@ public class RegisterView extends Application {
                 Button userLoginBtn = new Button("User Login");
                 userLoginBtn.setOnAction(e1 -> {
                     Stage loginStage = new Stage();
-                    userLoginView userLogin = new userLoginView();
+                    views.userLoginView userLogin = new views.userLoginView();
                     userLogin.start(loginStage);
-                    stage.close(); // close registration window
                 });
                 gp.add(userLoginBtn, 5, 3);
 
             }
 
         });
+        cancelBtn.setOnAction(e -> {
+
+        });
 
 
         // Set up scene and stage
         Scene scene = new Scene(gp, 600, 300);
-        stage.setScene(scene);
-        stage.setTitle("User Registration");
-        stage.show();
+        return scene;
     }
 }

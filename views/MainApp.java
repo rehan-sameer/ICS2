@@ -11,6 +11,11 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import Objects.Room;
 import Objects.User;
+import views.adminLoginView;
+import views.RegisterView;
+import views.userLoginView;
+import views.AddNewRoomView;
+
 
 import java.util.ArrayList;
 
@@ -20,8 +25,10 @@ public class MainApp extends Application {
     public static ArrayList<Room> rooms = new ArrayList<>();
     public static ArrayList<Reservation> reservations = new ArrayList<>();
     public static User Admin = new User ("admin", "admin", "admin");
+    public static User currentUser;
+
     @Override
-    public void start(Stage applicationStage) {
+    public void start(Stage stage) {
         GridPane gp = new GridPane();
         gp.setPadding(new Insets(30, 30, 30, 30));
         gp.setHgap(20);
@@ -34,25 +41,26 @@ public class MainApp extends Application {
         Button userLoginBtn = new Button("User Login");
         userLoginBtn.setMinWidth(150);
         userLoginBtn.setOnAction(e -> {
-            Stage loginStage = new Stage();
-            userLoginView userLogin = new userLoginView();
-            userLogin.start(loginStage);
+            stage.setScene(adminLoginView.adminLoginView());
+            stage.setTitle("User Login");
+            stage.show();
         });
 
         Button adminLoginBtn = new Button("Admin Login");
         adminLoginBtn.setMinWidth(150);
         adminLoginBtn.setOnAction(e -> {
-            Stage loginStage = new Stage();
-            adminLoginView adminLogin = new adminLoginView();
-            adminLogin.start(loginStage);
+
+            stage.setScene(adminLoginView.adminLoginView());
+            stage.setTitle("Admin Login");
+            stage.show();
         });
 
         Button registerBtn = new Button("Register");
         registerBtn.setMinWidth(150);
         registerBtn.setOnAction(e -> {
-            Stage loginStage = new Stage();
-            RegisterView register = new RegisterView();
-            register.start(loginStage);
+            stage.setScene(RegisterView.RegisterView());
+            stage.setTitle("User Registration");
+            stage.show();
         });
 
         gp.add(userLoginBtn, 0, 1);
@@ -60,9 +68,9 @@ public class MainApp extends Application {
         gp.add(registerBtn, 0, 3);
 
         Scene scene = new Scene(gp, 400, 350);
-        applicationStage.setScene(scene);
-        applicationStage.setTitle("Welcome Screen");
-        applicationStage.show();
+        stage.setScene(scene);
+        stage.setTitle("Welcome Screen");
+        stage.show();
     }
 
     public static void main(String[] args) {

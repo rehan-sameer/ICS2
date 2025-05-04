@@ -1,4 +1,5 @@
 package views;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -8,14 +9,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import Objects.User;
-
+import views.ReservationListView;
+import views.RoomListView;
+import views.AddNewRoomView;
+import Objects.Room;
+import views.userLoginView;
+import views.MainApp;
+import static views.MainApp.currentUser;
 import static views.MainApp.Admin;
 
-public class AdminDashboardView extends Application {
-    private User currentUser;
-
-    @Override
-    public void start (Stage stage){
+public class AdminDashboardView  {
+    public static Scene AdminDashboardView (){
         currentUser = Admin;
         GridPane gp = new GridPane();
         gp.setHgap(10);
@@ -25,41 +29,20 @@ public class AdminDashboardView extends Application {
 
         Label dashboardLabel = new Label("Welcome to the Admin Dashboard!");
 
-        Button manageRoomsBtn = new Button("Manage Rooms");
-        Button viewRequestsBtn = new Button("View Reservation Requests");
+        Button manageRoomsBtn = new Button("Rooms Management");
+        Button viewRequestsBtn = new Button("Reservation Requests");
         Button logoutBtn = new Button("Logout");
-        Button viewRoomsBtn = new Button("View Rooms & Availability");
-//        viewRoomsBtn.setMinWidth(200);
-
 
         gp.add(dashboardLabel, 0, 0); // spans 2 columns
         gp.add(manageRoomsBtn, 0, 1);
-        gp.add(viewRoomsBtn, 0, 2);
-        gp.add(viewRequestsBtn, 0, 3);
-        gp.add(logoutBtn, 0, 4);
-
-
-        viewRoomsBtn.setOnAction(e -> {
-            Stage roomListStage = new Stage();
-            RoomListView roomListView = new RoomListView();
-            roomListView.show(roomListStage, MainApp.rooms, Admin, null, null, null);
-        });
-
+        gp.add(viewRequestsBtn, 0, 2);
+        gp.add(logoutBtn, 0, 3);
 
         manageRoomsBtn.setOnAction(e -> {
-
-            Stage managingRooms = new Stage();
-            RoomManagementView manageRoom = new RoomManagementView();
-            manageRoom.start(managingRooms);
-
+            Stage roomManagementStage = new Stage();
+            RoomManagementView roomManagementView = new RoomManagementView();
+            roomManagementView.start(roomManagementStage);
         });
-
-
-
-        Scene scene = new Scene(gp, 350, 220);
-        stage.setScene(scene);
-        stage.setTitle("ADMIN DASHBOARD");
-        stage.show();
 
         viewRequestsBtn.setOnAction(e -> {
             Stage reservationListStage = new Stage();
@@ -68,9 +51,10 @@ public class AdminDashboardView extends Application {
         });
 
         logoutBtn.setOnAction(e -> {
-            stage.close(); // Close the dashboard
+             // todo: Close the dashboard
         });
-
+        Scene scene = new Scene(gp, 350, 220);
+        return scene;
+        //todo: .setTitle("ADMIN DASHBOARD");
     }
-
 }

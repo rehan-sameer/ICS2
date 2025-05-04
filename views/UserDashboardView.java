@@ -9,17 +9,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import Objects.User;
+import views.ReservationListView;
+import views.ReservationManagementView;
+import views.userLoginView;
+import Objects.Room;
 
-public class UserDashboardView extends Application {
-    private User currentUser;
+import static views.MainApp.currentUser;
 
-    // Constructor to accept User
-    public UserDashboardView(User user) {
-        this.currentUser = user;
-    }
+public class UserDashboardView{
+    public static Scene UserDashboardView() {
 
-    @Override
-    public void start(Stage stage) {
         GridPane gp = new GridPane();
         gp.setHgap(10);
         gp.setVgap(15);
@@ -30,7 +29,7 @@ public class UserDashboardView extends Application {
         Label dashboardLabel = new Label("Welcome " + currentUser.getUsername() + " to the User Dashboard!");
 
         Button searchRoomsBtn = new Button("Search Available Rooms");
-        Button myBookingsBtn = new Button("My Bookings");
+        Button myBookingsBtn = new Button("My Requests");
         Button logoutBtn = new Button("Logout");
 
         // Add components to grid
@@ -39,10 +38,7 @@ public class UserDashboardView extends Application {
         gp.add(myBookingsBtn, 0, 2);
         gp.add(logoutBtn, 0, 3);
 
-        Scene scene = new Scene(gp, 350, 220);
-        stage.setScene(scene);
-        stage.setTitle("USER DASHBOARD");
-        stage.show();
+
 
         // Button actions
         searchRoomsBtn.setOnAction(e -> {
@@ -58,11 +54,9 @@ public class UserDashboardView extends Application {
         });
 
         logoutBtn.setOnAction(e -> {
-            stage.close();
-            // Open the login view
-            Stage loginStage = new Stage();
-            userLoginView userLoginView = new userLoginView();
-            userLoginView.start(loginStage);
+            // todo: Open the login view
         });
+        Scene scene = new Scene(gp, 350, 220);
+        return scene;
     }
 }

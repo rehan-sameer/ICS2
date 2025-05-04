@@ -9,10 +9,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class adminLoginView extends Application {
-
-    @Override
-    public void start(Stage stage) {
+public class adminLoginView {
+    public static Scene adminLoginView() {
         GridPane gp = new GridPane();
         gp.setHgap(10);
         gp.setVgap(15);
@@ -26,6 +24,7 @@ public class adminLoginView extends Application {
         TextField usernameTF = new TextField();
         TextField passwordTF = new TextField();
         Button loginBtn = new Button("Login");
+        Button cancelBtn = new Button("Cancel");
 
         gp.add(loginLabel, 0, 0);
         gp.add(usernameLabel, 0, 1);
@@ -33,6 +32,7 @@ public class adminLoginView extends Application {
         gp.add(passwordLabel, 0, 2);
         gp.add(passwordTF, 1, 2);
         gp.add(loginBtn, 2, 3);
+        gp.add(cancelBtn, 1, 3);
 
         loginBtn.setOnAction(e -> {
             String inputUsername = usernameTF.getText();
@@ -40,20 +40,19 @@ public class adminLoginView extends Application {
 
             if (inputUsername.equals("admin") && inputPassword.equals("admin")) {
                 Stage loginStage = new Stage();
-                AdminDashboardView userLogin = new AdminDashboardView();
+                views.AdminDashboardView userLogin = new views.AdminDashboardView();
                 userLogin.start(loginStage);
-                stage.close();
-            }
-            else {
+            } else {
                 Label messageLabel = new Label("Invalid username or password");
                 gp.add(messageLabel, 1, 4);
             }
         });
+        cancelBtn.setOnAction(e -> {
+
+        });
 
 
         Scene scene = new Scene(gp, 400, 220);
-        stage.setScene(scene);
-        stage.setTitle("Admin Login");
-        stage.show();
+        return scene;
     }
 }

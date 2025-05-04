@@ -13,12 +13,14 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import views.AdminDashboardView;
+import views.UserDashboardView;
 
 import static views.MainApp.Admin;
 
 public class RoomListView {
 
-    public void show(Stage stage, List<Room> roomList, User currentUser, LocalDate date, LocalTime startTime, LocalTime endTime) {
+    public static Scene RoomListView(List<Room> roomList, User currentUser, LocalDate date, LocalTime startTime, LocalTime endTime) {
         GridPane gp = new GridPane();
         gp.setPadding(new Insets(20));
         gp.setVgap(10);
@@ -30,9 +32,11 @@ public class RoomListView {
 
         if (currentUser == Admin) {
             gp.add(new Label("Occupied?"), 3, 0);
+            gp.add(new Label("Edit"), 4, 0);
         } else {
             gp.add(new Label("Action"), 3, 0);
         }
+        Button backBtn = new Button("Back");
         List<Button> allBookingButtons = new ArrayList<>();
         int row = 1;
         for (Room room : roomList) {
@@ -57,12 +61,26 @@ public class RoomListView {
                 });
                 gp.add(bookBtn, 3, row);
             }
+            if (currentUser == Admin) {
+                Button editBtn = new Button("Edit");
+                editBtn.setOnAction(e -> {
+
+                });
+            }
             row++;
         }
 
+        backBtn.setOnAction(e -> {
+            if (currentUser == Admin) {
+                //todo: go back to AdminDashboardView
+            } else {
+                //todo: go back to UserDashboardView
+            }
+        });
+
+
+
         Scene scene = new Scene(gp, 600, 400);
-        stage.setScene(scene);
-        stage.setTitle(currentUser==Admin ? "All Rooms (Admin View)" : "Available Rooms");
-        stage.show();
+        return scene;
     }
 }
